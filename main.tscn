@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bfjk7s8iv8x0r"]
+[gd_scene load_steps=6 format=3 uid="uid://bfjk7s8iv8x0r"]
 
 [ext_resource type="PackedScene" uid="uid://fwafvegng775" path="res://player.tscn" id="1_basxf"]
 
@@ -6,14 +6,21 @@
 size = Vector2(400, 20)
 
 [sub_resource type="Gradient" id="Gradient_kykob"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_j4euu"]
 gradient = SubResource("Gradient_kykob")
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ypk31"]
+
 [node name="Main" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_basxf")]
-position = Vector2(170, 403)
+[node name="Player1" parent="." instance=ExtResource("1_basxf")]
+position = Vector2(204, 408)
+
+[node name="Player2" parent="." instance=ExtResource("1_basxf")]
+position = Vector2(952, 408)
+player_number = 2
 
 [node name="World" type="Node2D" parent="."]
 
@@ -37,6 +44,7 @@ position = Vector2(203, 249)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Floor4"]
 visibility_layer = 2
 shape = SubResource("RectangleShape2D_twynh")
+one_way_collision = true
 
 [node name="Sprite2D" type="Sprite2D" parent="World/Floor4"]
 visibility_layer = 2
@@ -77,8 +85,20 @@ position = Vector2(950, 254)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Floor3"]
 visibility_layer = 2
 shape = SubResource("RectangleShape2D_twynh")
+one_way_collision = true
 
 [node name="Sprite2D" type="Sprite2D" parent="World/Floor3"]
 visibility_layer = 2
 scale = Vector2(1.555, 18.915)
 texture = SubResource("GradientTexture1D_j4euu")
+
+[node name="DeathPlane" type="Area2D" parent="World"]
+visibility_layer = 2
+position = Vector2(562, 662)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/DeathPlane"]
+visibility_layer = 2
+shape = SubResource("WorldBoundaryShape2D_ypk31")
+
+[connection signal="body_entered" from="World/DeathPlane" to="Player1" method="_on_death_plane_body_entered"]
+[connection signal="body_entered" from="World/DeathPlane" to="Player2" method="_on_death_plane_body_entered"]
