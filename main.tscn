@@ -1,0 +1,84 @@
+[gd_scene load_steps=5 format=3 uid="uid://bfjk7s8iv8x0r"]
+
+[ext_resource type="PackedScene" uid="uid://fwafvegng775" path="res://player.tscn" id="1_basxf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_twynh"]
+size = Vector2(400, 20)
+
+[sub_resource type="Gradient" id="Gradient_kykob"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_j4euu"]
+gradient = SubResource("Gradient_kykob")
+
+[node name="Main" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_basxf")]
+position = Vector2(170, 403)
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="Floor1" type="StaticBody2D" parent="World"]
+visibility_layer = 2
+position = Vector2(203, 603)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Floor1"]
+visibility_layer = 2
+shape = SubResource("RectangleShape2D_twynh")
+
+[node name="Sprite2D" type="Sprite2D" parent="World/Floor1"]
+visibility_layer = 2
+scale = Vector2(1.555, 18.915)
+texture = SubResource("GradientTexture1D_j4euu")
+
+[node name="Floor4" type="StaticBody2D" parent="World"]
+visibility_layer = 2
+position = Vector2(203, 249)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Floor4"]
+visibility_layer = 2
+shape = SubResource("RectangleShape2D_twynh")
+
+[node name="Sprite2D" type="Sprite2D" parent="World/Floor4"]
+visibility_layer = 2
+scale = Vector2(1.555, 18.915)
+texture = SubResource("GradientTexture1D_j4euu")
+
+[node name="Floor5" type="StaticBody2D" parent="World"]
+visibility_layer = 2
+position = Vector2(573, 435)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Floor5"]
+visibility_layer = 2
+shape = SubResource("RectangleShape2D_twynh")
+one_way_collision = true
+
+[node name="Sprite2D" type="Sprite2D" parent="World/Floor5"]
+visibility_layer = 2
+scale = Vector2(1.555, 18.915)
+texture = SubResource("GradientTexture1D_j4euu")
+
+[node name="Floor2" type="StaticBody2D" parent="World"]
+visibility_layer = 2
+position = Vector2(950, 603)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Floor2"]
+visibility_layer = 2
+shape = SubResource("RectangleShape2D_twynh")
+
+[node name="Sprite2D" type="Sprite2D" parent="World/Floor2"]
+visibility_layer = 2
+scale = Vector2(1.555, 18.915)
+texture = SubResource("GradientTexture1D_j4euu")
+
+[node name="Floor3" type="StaticBody2D" parent="World"]
+visibility_layer = 2
+position = Vector2(950, 254)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Floor3"]
+visibility_layer = 2
+shape = SubResource("RectangleShape2D_twynh")
+
+[node name="Sprite2D" type="Sprite2D" parent="World/Floor3"]
+visibility_layer = 2
+scale = Vector2(1.555, 18.915)
+texture = SubResource("GradientTexture1D_j4euu")
