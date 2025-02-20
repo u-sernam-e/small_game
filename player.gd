@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+signal shoot_bullet(bullet : Transform2D, player_number : int)
 
 const MAX_SPEED = 600.0
 const ACCELERATION = 100.0
@@ -9,6 +10,13 @@ const FAST_FALL_VELOCITY = 1000.0
 @export var player_number = 1
 
 func _physics_process(delta: float) -> void:
+	# Bullet launching
+	if Input.is_action_just_pressed(player_input("shoot", player_number)):
+		shoot_bullet.emit($Pivot/Gun/BulletFirePoint.global_transform, player_number)
+	
+	# Gun moving
+	move_gun(delta)
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -18,7 +26,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY
 		$JumpSound.play()
 	
-	#fast falling
+	# fast falling
 	if Input.is_action_pressed(player_input("down", player_number)) and !is_on_floor():
 		if velocity.y > 0:
 			velocity.y = FAST_FALL_VELOCITY # if falling, set a high velocity down
@@ -43,6 +51,19 @@ func _on_death_plane_body_entered(body: Node2D) -> void:
 
 func die() -> void:
 	$DeathSound.play()
+	hide()
 
+# use this because there is different inputs for p1 and p2
 func player_input(input : String, p_number : int) -> String:
 	return "p" + str(p_number) + "_" + input
+
+func move_gun(delta: float):
+	$Pivot.rotation = move_toward($Pivot.rotation, velocity.angle(), absf($Pivot.rotation - velocity.angle()) * delta * velocity.length() * 0.005)
+	
+	if velocity.x != 0 and $Pivot/Gun.position.x != 0:
+		$Pivot.rotation = PI/2 - abs(PI/2 - $Pivot.rotation)*(velocity.x/abs(velocity.x))
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if "player_number" in area and area.player_number != player_number:
+		die()

@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bfjk7s8iv8x0r"]
+[gd_scene load_steps=7 format=3 uid="uid://bfjk7s8iv8x0r"]
 
 [ext_resource type="PackedScene" uid="uid://fwafvegng775" path="res://player.tscn" id="1_basxf"]
+[ext_resource type="PackedScene" uid="uid://b1jvk4ondmo2s" path="res://bullet_container.tscn" id="2_sb8de"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_twynh"]
 size = Vector2(400, 20)
@@ -17,6 +18,7 @@ gradient = SubResource("Gradient_kykob")
 
 [node name="Player1" parent="." instance=ExtResource("1_basxf")]
 position = Vector2(204, 408)
+player_number = 1
 
 [node name="Player2" parent="." instance=ExtResource("1_basxf")]
 position = Vector2(952, 408)
@@ -100,5 +102,9 @@ position = Vector2(562, 662)
 visibility_layer = 2
 shape = SubResource("WorldBoundaryShape2D_ypk31")
 
+[node name="BulletContainer" parent="." instance=ExtResource("2_sb8de")]
+
+[connection signal="shoot_bullet" from="Player1" to="BulletContainer" method="_on_player_1_shoot_bullet"]
+[connection signal="shoot_bullet" from="Player2" to="BulletContainer" method="_on_player_2_shoot_bullet"]
 [connection signal="body_entered" from="World/DeathPlane" to="Player1" method="_on_death_plane_body_entered"]
 [connection signal="body_entered" from="World/DeathPlane" to="Player2" method="_on_death_plane_body_entered"]

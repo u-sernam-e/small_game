@@ -1,24 +1,29 @@
-[gd_scene load_steps=6 format=3 uid="uid://fwafvegng775"]
+[gd_scene load_steps=8 format=3 uid="uid://fwafvegng775"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_jrx3i"]
 [ext_resource type="Texture2D" uid="uid://dnbi6ncfk1agw" path="res://Textures/player.png" id="1_my2m0"]
 [ext_resource type="AudioStream" uid="uid://piuxu88pv4vp" path="res://SoundEffects/jump.mp3" id="3_3n1bm"]
 [ext_resource type="AudioStream" uid="uid://bos2isjwi3xsd" path="res://SoundEffects/scream.mp3" id="4_gfhdi"]
+[ext_resource type="Texture2D" uid="uid://c424lin2mttum" path="res://Textures/gun.png" id="5_ekmcq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vxm1h"]
 radius = 19.0
 height = 78.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5kiaf"]
+radius = 18.0
+height = 76.0
+
 [node name="Player" type="CharacterBody2D"]
 z_index = 1
 script = ExtResource("1_jrx3i")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_vxm1h")
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.415, 0.415)
 texture = ExtResource("1_my2m0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_vxm1h")
 
 [node name="JumpSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_3n1bm")
@@ -26,3 +31,22 @@ volume_db = -8.8
 
 [node name="DeathSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_gfhdi")
+
+[node name="Pivot" type="Node2D" parent="."]
+
+[node name="Gun" type="Node2D" parent="Pivot"]
+position = Vector2(47.885, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Pivot/Gun"]
+scale = Vector2(0.235, 0.235)
+texture = ExtResource("5_ekmcq")
+
+[node name="BulletFirePoint" type="Node2D" parent="Pivot/Gun"]
+position = Vector2(11.975, 0)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_5kiaf")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
