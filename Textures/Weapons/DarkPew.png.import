@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://iy8ywcq0b6cd"
-path="res://.godot/imported/bullet.png-d0683fae3e5561e9777f695f5120b009.ctex"
+uid="uid://csaeq20c4p7wv"
+path="res://.godot/imported/DarkPew.png-3597136e93abb5459e84678e54a31860.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/bullet.png"
-dest_files=["res://.godot/imported/bullet.png-d0683fae3e5561e9777f695f5120b009.ctex"]
+source_file="res://Textures/Weapons/DarkPew.png"
+dest_files=["res://.godot/imported/DarkPew.png-3597136e93abb5459e84678e54a31860.ctex"]
 
 [params]
 

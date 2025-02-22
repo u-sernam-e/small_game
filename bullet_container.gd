@@ -12,6 +12,7 @@ func _process(delta: float) -> void:
 	pass
 
 # idk if this is bad code to have two of these functions
+# umm yes this is kinda bad, but we can work on making classes if our game gets chosen -jalen
 func _on_player_1_shoot_bullet(bullet: Transform2D, player_number : int) -> void:
 	create_bullet(bullet, player_number)
 func _on_player_2_shoot_bullet(bullet: Transform2D, player_number : int) -> void:

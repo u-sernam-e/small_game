@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://fwafvegng775"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_jrx3i"]
-[ext_resource type="Texture2D" uid="uid://dnbi6ncfk1agw" path="res://Textures/player.png" id="1_my2m0"]
+[ext_resource type="Texture2D" uid="uid://dnbi6ncfk1agw" path="res://Textures/Characters/player.png" id="1_my2m0"]
 [ext_resource type="AudioStream" uid="uid://piuxu88pv4vp" path="res://SoundEffects/jump.mp3" id="3_3n1bm"]
 [ext_resource type="AudioStream" uid="uid://bos2isjwi3xsd" path="res://SoundEffects/scream.mp3" id="4_gfhdi"]
-[ext_resource type="Texture2D" uid="uid://c424lin2mttum" path="res://Textures/gun.png" id="5_ekmcq"]
+[ext_resource type="Texture2D" uid="uid://c424lin2mttum" path="res://Textures/Weapons/gun.png" id="5_ekmcq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vxm1h"]
 radius = 19.0

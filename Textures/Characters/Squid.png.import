@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c424lin2mttum"
-path="res://.godot/imported/gun.png-c32421c90eeefb047c01c713f2c469bd.ctex"
+uid="uid://cf8t5eoxryow0"
+path="res://.godot/imported/Squid.png-d24566df4b07c5ff1e6449592dad8986.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/gun.png"
-dest_files=["res://.godot/imported/gun.png-c32421c90eeefb047c01c713f2c469bd.ctex"]
+source_file="res://Textures/Characters/Squid.png"
+dest_files=["res://.godot/imported/Squid.png-d24566df4b07c5ff1e6449592dad8986.ctex"]
 
 [params]
 
